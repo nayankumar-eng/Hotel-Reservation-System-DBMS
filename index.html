@@ -1,0 +1,567 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;--bg2:#111118;--bg3:#16161f;--bg4:#1c1c28;
+  --brand:#8B5CF6;--brand2:#6D28D9;--brand-glow:rgba(139,92,246,0.3);
+  --accent:#F59E0B;--accent2:#D97706;
+  --cyan:#06B6D4;--pink:#EC4899;
+  --txt:#F1F5F9;--txt2:#94A3B8;--txt3:#64748B;
+  --border:rgba(255,255,255,0.07);--border2:rgba(139,92,246,0.3);
+  --grad:linear-gradient(135deg,#8B5CF6,#EC4899);
+  --grad2:linear-gradient(135deg,#06B6D4,#8B5CF6);
+  --radius:14px;--radius2:20px
+}
+html,body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+button{font-family:'Inter',sans-serif;cursor:pointer;border:none;outline:none}
+
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(10,10,15,0.85);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:0 24px;height:64px;
+  display:flex;align-items:center;justify-content:space-between
+}
+.nav-logo{font-size:22px;font-weight:800;letter-spacing:-0.5px}
+.nav-logo .grd{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-logo .dot{width:7px;height:7px;background:var(--accent);border-radius:50%;display:inline-block;margin-left:2px;vertical-align:middle}
+.nav-links{display:flex;gap:4px}
+.nav-link{padding:8px 14px;border-radius:8px;font-size:13px;font-weight:500;color:var(--txt2);transition:all 0.15s}
+.nav-link:hover,.nav-link.active{background:rgba(255,255,255,0.07);color:var(--txt)}
+.nav-cta{background:var(--brand);color:white;padding:8px 18px;border-radius:8px;font-size:13px;font-weight:600;transition:all 0.15s;margin-left:8px}
+.nav-cta:hover{background:#7C3AED;box-shadow:0 0 20px var(--brand-glow)}
+
+.hero{
+  min-height:88vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:80px 24px 60px;position:relative;overflow:hidden
+}
+.hero-glow1{position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(139,92,246,0.18) 0%,transparent 70%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:-100px;left:20%;width:400px;height:400px;background:radial-gradient(circle,rgba(6,182,212,0.1) 0%,transparent 70%);pointer-events:none}
+.hero-glow3{position:absolute;bottom:-80px;right:15%;width:300px;height:300px;background:radial-gradient(circle,rgba(236,72,153,0.1) 0%,transparent 70%);pointer-events:none}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.3);
+  border-radius:50px;padding:6px 16px;font-size:12px;font-weight:600;
+  color:#C4B5FD;margin-bottom:24px;position:relative
+}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:#8B5CF6;animation:pls 2s infinite}
+@keyframes pls{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(139,92,246,0.5)}50%{opacity:0.6;box-shadow:0 0 0 6px transparent}}
+
+.hero h1{font-size:clamp(36px,6vw,72px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:20px;position:relative}
+.hero h1 .grd{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1 .grd2{background:var(--grad2);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:17px;color:var(--txt2);max-width:520px;margin:0 auto 36px;line-height:1.7;position:relative}
+
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;margin-bottom:56px}
+.btn-primary{
+  background:var(--grad);color:white;padding:14px 30px;
+  border-radius:10px;font-size:15px;font-weight:700;
+  transition:all 0.2s;box-shadow:0 8px 32px var(--brand-glow)
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px var(--brand-glow)}
+.btn-outline{
+  background:transparent;border:1px solid rgba(255,255,255,0.15);
+  color:var(--txt);padding:14px 30px;border-radius:10px;
+  font-size:15px;font-weight:600;transition:all 0.2s
+}
+.btn-outline:hover{border-color:var(--brand);background:rgba(139,92,246,0.08)}
+
+.stats-row{
+  display:flex;gap:0;justify-content:center;
+  background:rgba(255,255,255,0.03);border:1px solid var(--border);
+  border-radius:var(--radius2);overflow:hidden;position:relative;flex-wrap:wrap
+}
+.stat{padding:24px 40px;text-align:center;border-right:1px solid var(--border);flex:1;min-width:150px}
+.stat:last-child{border-right:none}
+.stat-num{font-size:28px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-lbl{font-size:12px;color:var(--txt2);font-weight:500;margin-top:2px}
+
+.search-section{padding:0 24px;max-width:1000px;margin:-28px auto 0;position:relative;z-index:10}
+.search-card{
+  background:rgba(22,22,31,0.95);border:1px solid var(--border);
+  border-radius:var(--radius2);padding:24px;
+  box-shadow:0 24px 80px rgba(0,0,0,0.5)
+}
+.search-tabs{display:flex;gap:6px;margin-bottom:20px}
+.stab{
+  padding:8px 18px;border-radius:8px;font-size:13px;font-weight:600;
+  color:var(--txt2);background:transparent;border:1px solid transparent;
+  transition:all 0.15s;display:flex;align-items:center;gap:6px
+}
+.stab.on{background:rgba(139,92,246,0.15);border-color:var(--border2);color:#C4B5FD}
+.stab:hover:not(.on){color:var(--txt);background:rgba(255,255,255,0.04)}
+.search-fields{display:flex;gap:0;align-items:stretch;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.sf{flex:1;min-width:130px;padding:12px 18px;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:4px;background:rgba(255,255,255,0.02)}
+.sf:last-of-type{border-right:none}
+.sf-lbl{font-size:10px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:1px}
+.sf-inp{background:transparent;border:none;outline:none;font-size:14px;font-weight:500;color:var(--txt);font-family:'Inter',sans-serif;width:100%}
+.sf-inp::placeholder{color:var(--txt3)}
+.srch-btn{
+  background:var(--grad);color:white;border:none;border-radius:10px;
+  padding:13px 28px;font-size:14px;font-weight:700;
+  white-space:nowrap;align-self:center;margin-left:12px;
+  transition:all 0.15s;box-shadow:0 4px 20px var(--brand-glow)
+}
+.srch-btn:hover{transform:translateY(-1px);box-shadow:0 8px 28px var(--brand-glow)}
+
+section{padding:80px 24px}
+.container{max-width:1140px;margin:0 auto}
+.sec-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--brand);margin-bottom:10px}
+.sec-title{font-size:clamp(26px,4vw,42px);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:12px}
+.sec-sub{font-size:16px;color:var(--txt2);max-width:520px;margin-bottom:44px}
+
+.tab-bar{display:flex;gap:6px;margin-bottom:28px;flex-wrap:wrap;align-items:center}
+.tb{
+  padding:9px 18px;border-radius:50px;font-size:13px;font-weight:600;
+  background:transparent;border:1px solid var(--border);color:var(--txt2);
+  transition:all 0.2s;display:flex;align-items:center;gap:6px
+}
+.tb .tbc{font-size:11px;background:rgba(255,255,255,0.08);padding:1px 7px;border-radius:50px}
+.tb.on{background:rgba(139,92,246,0.15);border-color:var(--border2);color:#E9D5FF}
+.tb:hover:not(.on){border-color:rgba(139,92,246,0.3);color:var(--txt)}
+
+.qf-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.qf{
+  padding:6px 14px;border-radius:50px;font-size:12px;font-weight:600;
+  background:transparent;border:1px solid var(--border);color:var(--txt3);
+  transition:all 0.15s
+}
+.qf.on,.qf:hover{background:rgba(139,92,246,0.12);border-color:var(--border2);color:#C4B5FD}
+
+.filter-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;align-items:center}
+.filter-row input,.filter-row select{
+  background:var(--bg3);border:1px solid var(--border);
+  color:var(--txt);border-radius:10px;padding:10px 14px;
+  font-size:13px;font-family:'Inter',sans-serif;font-weight:500;
+  outline:none;transition:border-color 0.15s;min-width:140px
+}
+.filter-row input:focus,.filter-row select:focus{border-color:var(--border2)}
+.filter-row input{min-width:220px}
+.filter-row select option{background:#1c1c28}
+.res-meta{font-size:12px;color:var(--txt3);margin-left:auto;font-weight:500}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.card{
+  background:var(--bg3);border-radius:var(--radius2);
+  border:1px solid var(--border);overflow:hidden;
+  transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),border-color 0.3s,box-shadow 0.3s;
+  animation:fadeUp 0.4s ease both
+}
+.card:hover{transform:translateY(-8px);border-color:rgba(139,92,246,0.4);box-shadow:0 24px 60px rgba(0,0,0,0.4)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+.card-img{position:relative;height:200px;overflow:hidden}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
+.card:hover .card-img img{transform:scale(1.07)}
+.card-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(transparent,rgba(0,0,0,0.6))}
+.deal-bdg{position:absolute;top:12px;left:12px;background:linear-gradient(135deg,#EF4444,#DC2626);color:white;font-size:10px;font-weight:700;padding:4px 10px;border-radius:6px;letter-spacing:0.5px;text-transform:uppercase}
+.loc-bdg{position:absolute;bottom:12px;left:12px;background:rgba(0,0,0,0.65);color:rgba(255,255,255,0.9);font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;backdrop-filter:blur(6px);z-index:1}
+.wish{position:absolute;top:12px;right:12px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);backdrop-filter:blur(6px);border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all 0.2s;cursor:pointer}
+.wish:hover{background:rgba(255,255,255,0.2);transform:scale(1.1)}
+.wish.on{background:rgba(239,68,68,0.2);border-color:rgba(239,68,68,0.4);animation:hpop 0.3s}
+@keyframes hpop{0%{transform:scale(1)}50%{transform:scale(1.35)}100%{transform:scale(1)}}
+
+.card-body{padding:18px}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.card-name{font-size:15px;font-weight:700;color:var(--txt);line-height:1.3;flex:1;margin-right:8px}
+.rating{display:flex;align-items:center;gap:4px;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.2);border-radius:7px;padding:3px 8px;flex-shrink:0}
+.rating .star{color:#F59E0B;font-size:11px}
+.rating span{font-size:12px;font-weight:700;color:#FCD34D}
+.card-loc{font-size:12px;color:var(--txt3);margin-bottom:12px;display:flex;align-items:center;gap:5px}
+.chips{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+.chip{font-size:11px;font-weight:600;padding:3px 9px;border-radius:6px}
+.chip.h{background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.2);color:#C4B5FD}
+.chip.f{background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.2);color:#67E8F9}
+.chip.p{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);color:#6EE7B7}
+.card-foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);padding-top:14px}
+.price-val{font-size:22px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.price-lbl{font-size:11px;color:var(--txt3);margin-top:1px}
+.book-btn{
+  background:var(--grad);color:white;border-radius:9px;
+  padding:9px 20px;font-size:13px;font-weight:700;
+  transition:all 0.15s;box-shadow:0 4px 16px var(--brand-glow)
+}
+.book-btn:hover{transform:translateY(-1px);box-shadow:0 6px 22px var(--brand-glow)}
+.book-btn:active{transform:scale(0.97)}
+
+.featured{
+  background:linear-gradient(135deg,rgba(139,92,246,0.12),rgba(6,182,212,0.08));
+  border:1px solid rgba(139,92,246,0.2);
+  border-radius:var(--radius2);padding:28px 32px;margin-bottom:32px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  position:relative;overflow:hidden
+}
+.featured::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(139,92,246,0.15),transparent 70%);pointer-events:none}
+.feat-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#A78BFA;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#A78BFA;animation:pls 2s infinite;display:inline-block}
+.feat-title{font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:4px}
+.feat-sub{font-size:13px;color:var(--txt2)}
+.feat-btn{background:rgba(139,92,246,0.15);border:1px solid var(--border2);color:#C4B5FD;border-radius:9px;padding:10px 20px;font-size:13px;font-weight:700;transition:all 0.15s;white-space:nowrap}
+.feat-btn:hover{background:rgba(139,92,246,0.25)}
+
+.bk-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:24px}
+.bk-stat{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:18px}
+.bk-stat-num{font-size:24px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.bk-stat-lbl{font-size:12px;color:var(--txt3);margin-top:2px;font-weight:500}
+
+.bk-card{background:var(--bg3);border-radius:var(--radius2);border:1px solid var(--border);padding:24px}
+.bk-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px;border-radius:12px;border:1px solid var(--border);
+  margin-bottom:10px;gap:12px;flex-wrap:wrap;
+  transition:border-color 0.2s,background 0.2s;animation:fadeUp 0.3s ease
+}
+.bk-row:hover{border-color:rgba(139,92,246,0.3);background:rgba(139,92,246,0.04)}
+.bk-ico{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.bk-ico.h{background:rgba(139,92,246,0.15)}
+.bk-ico.f{background:rgba(6,182,212,0.15)}
+.bk-ico.p{background:rgba(16,185,129,0.15)}
+.bk-name{font-size:14px;font-weight:700;color:var(--txt)}
+.bk-meta{font-size:12px;color:var(--txt3);margin-top:2px}
+.bk-price{font-size:16px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.conf-bdg{font-size:11px;font-weight:600;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.2);color:#6EE7B7;padding:3px 9px;border-radius:6px}
+.cancel-btn{background:transparent;border:1px solid rgba(239,68,68,0.35);color:#FCA5A5;border-radius:8px;padding:7px 14px;font-size:12px;font-weight:600;transition:all 0.15s}
+.cancel-btn:hover{background:rgba(239,68,68,0.1)}
+
+.empty{text-align:center;padding:70px 24px}
+.empty-icon{font-size:52px;margin-bottom:16px;opacity:0.4}
+.empty-ttl{font-size:20px;font-weight:700;margin-bottom:6px}
+.empty-sub{font-size:14px;color:var(--txt2)}
+
+.toast{
+  position:fixed;bottom:28px;right:28px;
+  background:linear-gradient(135deg,#059669,#047857);color:white;
+  padding:14px 22px;border-radius:12px;font-size:14px;font-weight:600;
+  opacity:0;transform:translateY(12px);
+  transition:opacity 0.3s,transform 0.3s;pointer-events:none;z-index:9999;
+  display:flex;align-items:center;gap:9px;box-shadow:0 10px 40px rgba(5,150,105,0.45)
+}
+.toast.show{opacity:1;transform:translateY(0)}
+.tc{width:20px;height:20px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24px;text-align:center}
+.footer-logo{font-size:20px;font-weight:800;margin-bottom:6px}
+.footer-sub{font-size:13px;color:var(--txt3)}
+</style>
+
+<h2 class="sr-only">StayNova — Hotels, Flights & Holiday Booking Platform</h2>
+
+<nav>
+  <div class="nav-logo">Stay<span class="grd">Nova</span><span class="dot"></span></div>
+  <div class="nav-links">
+    <a class="nav-link active" href="#" onclick="switchTab('hotels',this);return false">Hotels</a>
+    <a class="nav-link" href="#" onclick="switchTab('flights',this);return false">Flights</a>
+    <a class="nav-link" href="#" onclick="switchTab('packages',this);return false">Packages</a>
+    <a class="nav-link" href="#" onclick="switchTab('bookings',this);return false">My Bookings</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('search-sec').scrollIntoView({behavior:'smooth'})">Search Stays</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-glow1"></div><div class="hero-glow2"></div><div class="hero-glow3"></div>
+  <div class="hero-badge"><span class="badge-dot"></span>AI-Powered Travel Discovery</div>
+  <h1>Find Your Perfect<br><span class="grd">Escape</span> <span class="grd2">Anywhere</span></h1>
+  <p class="hero-sub">StayNova finds the best hotels, flights, and holiday packages — personalised to your destination, budget, and travel style.</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="document.getElementById('search-sec').scrollIntoView({behavior:'smooth'})">Start Exploring →</button>
+    <button class="btn-outline" onclick="switchTabByName('packages')">See Holiday Packages</button>
+  </div>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">2M+</div><div class="stat-lbl">Happy Travellers</div></div>
+    <div class="stat"><div class="stat-num">50K+</div><div class="stat-lbl">Properties Listed</div></div>
+    <div class="stat"><div class="stat-num">180+</div><div class="stat-lbl">Destinations</div></div>
+    <div class="stat"><div class="stat-num">96%</div><div class="stat-lbl">Satisfaction Rate</div></div>
+  </div>
+</div>
+
+<div id="search-sec" style="max-width:1000px;margin:-20px auto 0;padding:0 24px;position:relative;z-index:10">
+  <div class="search-card">
+    <div class="search-tabs" id="searchTabs">
+      <button class="stab on" onclick="switchTabByName('hotels');setSearchTab(this)">🏨 Hotels</button>
+      <button class="stab" onclick="switchTabByName('flights');setSearchTab(this)">✈️ Flights</button>
+      <button class="stab" onclick="switchTabByName('packages');setSearchTab(this)">🌴 Packages</button>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+      <div class="search-fields" style="flex:1;min-width:300px">
+        <div class="sf"><div class="sf-lbl">Destination</div><input class="sf-inp" id="dest" placeholder="City or hotel..." /></div>
+        <div class="sf"><div class="sf-lbl">Check-in</div><input class="sf-inp" type="date" id="checkin" /></div>
+        <div class="sf"><div class="sf-lbl">Check-out</div><input class="sf-inp" type="date" id="checkout" /></div>
+        <div class="sf" style="max-width:90px"><div class="sf-lbl">Guests</div><input class="sf-inp" type="number" id="guests" value="2" min="1" max="10" /></div>
+      </div>
+      <button class="srch-btn" onclick="doSearch()">Search</button>
+    </div>
+  </div>
+</div>
+
+<section id="results-sec">
+  <div class="container">
+    <div class="tab-bar" id="tabBar">
+      <button class="tb on" onclick="switchTab('hotels',this)">🏨 Hotels <span class="tbc" id="tc-h">12</span></button>
+      <button class="tb" onclick="switchTab('flights',this)">✈️ Flights <span class="tbc" id="tc-f">6</span></button>
+      <button class="tb" onclick="switchTab('packages',this)">🌴 Packages <span class="tbc" id="tc-p">6</span></button>
+      <button class="tb" onclick="switchTab('bookings',this)">📋 My Bookings <span class="tbc" id="tc-b">0</span></button>
+    </div>
+
+    <div id="filterBar">
+      <div class="filter-row">
+        <input type="text" id="search" placeholder="🔍  Search destinations, hotels..." oninput="filterData()" />
+        <select id="sort" onchange="filterData()">
+          <option value="">Sort by</option>
+          <option value="low">Price: Low to High</option>
+          <option value="high">Price: High to Low</option>
+          <option value="rating">Top Rated</option>
+          <option value="reviews">Most Reviewed</option>
+        </select>
+        <select id="cityFilter" onchange="filterData()">
+          <option value="">All cities</option>
+        </select>
+        <select id="priceFilter" onchange="filterData()">
+          <option value="">Any budget</option>
+          <option value="2000">Under ₹2,000</option>
+          <option value="5000">Under ₹5,000</option>
+          <option value="10000">Under ₹10,000</option>
+          <option value="20000">Under ₹20,000</option>
+        </select>
+        <span class="res-meta" id="resMeta"></span>
+      </div>
+      <div class="qf-row" id="qfRow"></div>
+    </div>
+
+    <div id="output"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Stay<span style="background:linear-gradient(135deg,#8B5CF6,#EC4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Nova</span></div>
+  <div class="footer-sub">Hotels · Flights · Holidays — All in one place &nbsp;🚀</div>
+</footer>
+
+<div class="toast" id="toast"><div class="tc">✓</div><span id="tmsg"></span></div>
+
+<script>
+const hotels=[
+  {name:"Blue Star Beachfront",city:"Goa",price:2500,rating:4.2,reviews:312,amenities:["Pool","Wifi","Beach"],img:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&q=80",deal:true},
+  {name:"City Palace Resort",city:"Jaipur",price:2200,rating:4.0,reviews:245,amenities:["Spa","Wifi","Restaurant"],img:"https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80"},
+  {name:"Green View Inn",city:"Delhi",price:1800,rating:3.8,reviews:189,amenities:["Wifi","Parking","AC"],img:"https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=500&q=80"},
+  {name:"Taj Coral Reef",city:"Maldives",price:18500,rating:4.9,reviews:512,amenities:["Pool","Dive","Wifi","Spa"],img:"https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=500&q=80",deal:true},
+  {name:"Marine Drive Inn",city:"Mumbai",price:3200,rating:4.1,reviews:278,amenities:["Sea View","Wifi","Bar"],img:"https://images.unsplash.com/photo-1529290130-4ca3753253ae?w=500&q=80"},
+  {name:"Himalayan Retreat",city:"Manali",price:4100,rating:4.5,reviews:331,amenities:["Mountain View","Fireplace","Wifi"],img:"https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=500&q=80",deal:true},
+  {name:"Lake Palace Hotel",city:"Udaipur",price:6800,rating:4.7,reviews:420,amenities:["Lake View","Pool","Fine Dining"],img:"https://images.unsplash.com/photo-1551882547-ff40c4fe1fa7?w=500&q=80"},
+  {name:"Backwater Villa",city:"Alleppey",price:3500,rating:4.3,reviews:198,amenities:["Houseboat","Wifi","Breakfast"],img:"https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=500&q=80"},
+  {name:"Heritage Grand",city:"Mysore",price:2900,rating:4.2,reviews:265,amenities:["Heritage","Spa","Restaurant"],img:"https://images.unsplash.com/photo-1590490360182-c33d57733427?w=500&q=80"},
+  {name:"Tea Garden Resort",city:"Darjeeling",price:3100,rating:4.4,reviews:142,amenities:["Tea Estate","Mountain View","Wifi"],img:"https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=500&q=80"},
+  {name:"Desert Camp Luxury",city:"Jaisalmer",price:5200,rating:4.6,reviews:289,amenities:["Desert View","Camp","Cultural Show"],img:"https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=500&q=80"},
+  {name:"Cherai Beach Resort",city:"Kochi",price:2700,rating:4.0,reviews:211,amenities:["Beach","Pool","Wifi"],img:"https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=500&q=80"}
+];
+const flights=[
+  {name:"Nova Air",route:"Delhi → Mumbai",price:4500,img:"https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=500&q=80",rating:4.1,reviews:890,amenities:["2h 10m","Non-stop","Meals"]},
+  {name:"Sky Jet",route:"Mumbai → Goa",price:3500,img:"https://images.unsplash.com/photo-1494526585095-c41746248156?w=500&q=80",rating:3.9,reviews:654,amenities:["1h 20m","Non-stop"]},
+  {name:"Air India",route:"Delhi → Bangalore",price:5200,img:"https://images.unsplash.com/photo-1542296332-2e4473faf563?w=500&q=80",rating:4.0,reviews:1200,amenities:["2h 45m","Meals","Wifi"]},
+  {name:"IndiGo",route:"Kolkata → Chennai",price:4100,img:"https://images.unsplash.com/photo-1521727857535-28d2047619cf?w=500&q=80",rating:4.2,reviews:980,amenities:["2h 30m","Non-stop"],deal:true},
+  {name:"Vistara",route:"Mumbai → Hyderabad",price:3800,img:"https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=500&q=80",rating:4.4,reviews:765,amenities:["1h 35m","Meals","Premium"]},
+  {name:"SpiceJet",route:"Delhi → Goa",price:4900,img:"https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?w=500&q=80",rating:3.8,reviews:530,amenities:["2h 55m","Snacks"]}
+];
+const packages=[
+  {name:"Goa Beach Escape",city:"Goa",price:9999,rating:4.3,reviews:412,amenities:["3 Nights","Breakfast","Airport Transfer"],img:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&q=80",deal:true},
+  {name:"Manali Snow Holiday",city:"Manali",price:12999,rating:4.5,reviews:328,amenities:["4 Nights","All Meals","Sightseeing"],img:"https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=500&q=80"},
+  {name:"Rajasthan Royal Tour",city:"Jaipur",price:18500,rating:4.6,reviews:195,amenities:["6 Nights","Heritage Hotels","Guide"],img:"https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=500&q=80",deal:true},
+  {name:"Kerala Backwaters",city:"Alleppey",price:14999,rating:4.7,reviews:261,amenities:["5 Nights","Houseboat","Breakfast"],img:"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80"},
+  {name:"Maldives Honeymoon",city:"Maldives",price:85000,rating:4.9,reviews:144,amenities:["5 Nights","Overwater Villa","All Inclusive"],img:"https://images.unsplash.com/photo-1540202404-a2f29016b523?w=500&q=80",deal:true},
+  {name:"Andaman Adventure",city:"Port Blair",price:22000,rating:4.4,reviews:178,amenities:["6 Nights","Snorkeling","Island Hopping"],img:"https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=500&q=80"}
+];
+
+const QFS={
+  hotels:["All","Deals","Top Rated","Beach","Mountains","Heritage"],
+  flights:["All","Non-stop","Deals","With Meals","Premium"],
+  packages:["All","Deals","Honeymoon","Adventure","Heritage"]
+};
+
+let curTab="hotels",qf="",wishlist=new Set();
+
+function gb(){try{return JSON.parse(localStorage.getItem("sn3")||"[]")}catch{return[]}}
+function sb(d){try{localStorage.setItem("sn3",JSON.stringify(d))}catch{}}
+function updBC(){const n=gb().length;document.getElementById("tc-b").textContent=n}
+
+function toast(m){
+  document.getElementById("tmsg").textContent=m;
+  const t=document.getElementById("toast");
+  t.classList.add("show");clearTimeout(t._t);
+  t._t=setTimeout(()=>t.classList.remove("show"),3000);
+}
+
+function book(type,name,price){
+  const b=gb();b.push({type,name,price,date:new Date().toLocaleDateString("en-IN")});
+  sb(b);updBC();toast("Booking confirmed — "+name+"!");
+}
+
+function cancelBooking(i){
+  const b=gb();b.splice(i,1);sb(b);updBC();toast("Booking cancelled.");showBookings();
+}
+
+function toggleWish(key,el){
+  if(wishlist.has(key)){wishlist.delete(key);el.textContent="🤍";el.classList.remove("on");}
+  else{wishlist.add(key);el.textContent="❤️";el.classList.add("on");toast("Added to wishlist!");}
+}
+
+function getData(){
+  if(curTab==="hotels")return{data:hotels,type:"Hotel",pl:"per night",cc:"h"};
+  if(curTab==="flights")return{data:flights,type:"Flight",pl:"per person",cc:"f"};
+  return{data:packages,type:"Package",pl:"total",cc:"p"};
+}
+
+function renderCards(data,type,pl,cc){
+  const out=document.getElementById("output");
+  if(!data.length){
+    out.innerHTML=`<div class="empty"><div class="empty-icon">🔍</div><div class="empty-ttl">No results found</div><div class="empty-sub">Try adjusting your filters or search terms</div></div>`;
+    return;
+  }
+  const minP=Math.min(...data.map(d=>d.price));
+  let h=`<div class="featured">
+    <div>
+      <div class="feat-label"><span class="live-dot"></span> ${type==="Hotel"?"Top Pick":type==="Flight"?"Best Fare":"Trending"} — Live prices</div>
+      <div class="feat-title">${data[0].name}</div>
+      <div class="feat-sub">From ₹${minP.toLocaleString("en-IN")} &bull; ${data.length} options available right now</div>
+    </div>
+    <button class="feat-btn" onclick="document.getElementById('search').focus()">Browse All →</button>
+  </div><div class="grid">`;
+
+  data.forEach((d,i)=>{
+    const key=d.name+d.price;
+    const w=wishlist.has(key);
+    h+=`<div class="card" style="animation-delay:${i*0.04}s">
+      <div class="card-img">
+        <img src="${d.img}" loading="lazy" alt="${d.name}">
+        ${d.deal?`<div class="deal-bdg">🔥 Deal</div>`:""}
+        <div class="loc-bdg">${d.city||d.route||""}</div>
+        <button class="wish ${w?"on":""}" onclick="toggleWish('${key}',this)">${w?"❤️":"🤍"}</button>
+      </div>
+      <div class="card-body">
+        <div class="card-head">
+          <div class="card-name">${d.name}</div>
+          <div class="rating"><span class="star">★</span><span>${d.rating}</span></div>
+        </div>
+        <div class="card-loc">📍 ${d.city||d.route||""} &bull; <span style="color:var(--txt3)">${d.reviews} reviews</span></div>
+        <div class="chips">${(d.amenities||[]).map(a=>`<span class="chip ${cc}">${a}</span>`).join("")}</div>
+        <div class="card-foot">
+          <div><div class="price-val">₹${d.price.toLocaleString("en-IN")}</div><div class="price-lbl">${pl}</div></div>
+          <button class="book-btn" onclick="book('${type}','${d.name}',${d.price})">Book Now</button>
+        </div>
+      </div>
+    </div>`;
+  });
+  out.innerHTML=h+"</div>";
+  document.getElementById("resMeta").textContent=`${data.length} results`;
+}
+
+function showBookings(){
+  const b=gb();
+  const ico={Hotel:"🏨",Flight:"✈️",Package:"🌴"};
+  const cls={Hotel:"h",Flight:"f",Package:"p"};
+  let h=`<div class="bk-stats">
+    <div class="bk-stat"><div class="bk-stat-num">${b.length}</div><div class="bk-stat-lbl">Total bookings</div></div>
+    <div class="bk-stat"><div class="bk-stat-num">₹${b.reduce((s,x)=>s+x.price,0).toLocaleString("en-IN")}</div><div class="bk-stat-lbl">Total spent</div></div>
+    <div class="bk-stat"><div class="bk-stat-num">${b.filter(x=>x.type==="Hotel").length}</div><div class="bk-stat-lbl">Hotel stays</div></div>
+    <div class="bk-stat"><div class="bk-stat-num">${b.filter(x=>x.type==="Flight").length}</div><div class="bk-stat-lbl">Flights booked</div></div>
+  </div><div class="bk-card">`;
+  if(!b.length){
+    h+=`<div class="empty"><div class="empty-icon">🧳</div><div class="empty-ttl">No bookings yet</div><div class="empty-sub">Start exploring and book your next adventure</div></div>`;
+  } else {
+    b.forEach((x,i)=>{
+      h+=`<div class="bk-row">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="bk-ico ${cls[x.type]||"h"}">${ico[x.type]||"🏨"}</div>
+          <div><div class="bk-name">${x.name}</div><div class="bk-meta">${x.type} &bull; ${x.date}</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span class="conf-bdg">Confirmed</span>
+          <span class="bk-price">₹${x.price.toLocaleString("en-IN")}</span>
+          <button class="cancel-btn" onclick="cancelBooking(${i})">Cancel</button>
+        </div>
+      </div>`;
+    });
+  }
+  document.getElementById("output").innerHTML=h+"</div>";
+}
+
+function setupQF(){
+  const qs=QFS[curTab]||[];
+  document.getElementById("qfRow").innerHTML=qs.map(q=>`<button class="qf ${qf===q||(!qf&&q==="All")?"on":""}" onclick="setQF('${q}')">${q}</button>`).join("");
+}
+
+function setQF(f){qf=(f==="All"?"":f);setupQF();filterData();}
+
+function populateCity(){
+  const sel=document.getElementById("cityFilter");
+  sel.innerHTML="<option value=''>All cities</option>";
+  if(curTab==="flights"){sel.style.display="none";return;}
+  sel.style.display="";
+  const {data}=getData();
+  [...new Set(data.map(d=>d.city).filter(Boolean))].sort().forEach(c=>{const o=document.createElement("option");o.value=c;o.textContent=c;sel.appendChild(o);});
+}
+
+function filterData(){
+  if(curTab==="bookings"){showBookings();return;}
+  const s=document.getElementById("search").value.toLowerCase();
+  const sort=document.getElementById("sort").value;
+  const city=document.getElementById("cityFilter").value;
+  const price=parseInt(document.getElementById("priceFilter").value)||Infinity;
+  const {data,type,pl,cc}=getData();
+
+  let filt=[...data].filter(d=>{
+    const nm=d.name.toLowerCase(),loc=(d.city||d.route||"").toLowerCase(),am=(d.amenities||[]).join(" ").toLowerCase();
+    if(s&&!nm.includes(s)&&!loc.includes(s)&&!am.includes(s))return false;
+    if(city&&d.city!==city)return false;
+    if(d.price>price)return false;
+    if(qf){
+      if(qf==="Deals"&&!d.deal)return false;
+      if(qf==="Top Rated"&&d.rating<4.4)return false;
+      if(qf==="Non-stop"&&!am.includes("non-stop"))return false;
+      if(qf==="With Meals"&&!am.includes("meal"))return false;
+      if(qf==="Premium"&&!am.includes("premium"))return false;
+      if(qf==="Beach"&&!am.includes("beach")&&!(d.city||"").match(/goa|kochi/i))return false;
+      if(qf==="Mountains"&&!(d.city||"").match(/manali|darjeeling/i))return false;
+      if(qf==="Heritage"&&!am.includes("heritage")&&!(d.city||"").match(/jaipur|mysore|udaipur/i))return false;
+      if(qf==="Honeymoon"&&!nm.includes("honeymoon")&&!(d.city||"").match(/maldives/i))return false;
+      if(qf==="Adventure"&&!am.match(/snorkel|camp|dive|adven/i))return false;
+    }
+    return true;
+  });
+
+  if(sort==="low")filt.sort((a,b)=>a.price-b.price);
+  else if(sort==="high")filt.sort((a,b)=>b.price-a.price);
+  else if(sort==="rating")filt.sort((a,b)=>b.rating-a.rating);
+  else if(sort==="reviews")filt.sort((a,b)=>b.reviews-a.reviews);
+
+  renderCards(filt,type,pl,cc);
+}
+
+function switchTab(tab,el){
+  curTab=tab;qf="";
+  document.querySelectorAll(".tb").forEach(b=>b.classList.remove("on"));
+  if(el&&el.classList){el.classList.add("on");}
+  const fb=document.getElementById("filterBar");
+  fb.style.display=tab==="bookings"?"none":"block";
+  document.querySelectorAll(".nav-link").forEach(l=>l.classList.remove("active"));
+  if(tab==="bookings"){showBookings();return;}
+  ["search","sort","cityFilter","priceFilter"].forEach(id=>{const e=document.getElementById(id);if(e)e.value="";});
+  populateCity();setupQF();filterData();
+}
+
+function switchTabByName(tab){
+  const tbs=document.querySelectorAll(".tb");
+  const idx={hotels:0,flights:1,packages:2,bookings:3};
+  switchTab(tab,tbs[idx[tab]||0]);
+  document.getElementById("results-sec").scrollIntoView({behavior:"smooth"});
+}
+
+function setSearchTab(el){document.querySelectorAll(".stab").forEach(b=>b.classList.remove("on"));el.classList.add("on");}
+function doSearch(){const v=document.getElementById("dest").value;if(v)document.getElementById("search").value=v;filterData();document.getElementById("results-sec").scrollIntoView({behavior:"smooth"});}
+
+updBC();populateCity();setupQF();filterData();
+</script>
